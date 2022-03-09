@@ -65,19 +65,25 @@ class ElectroluxWellbeingPlatform implements DynamicPlatformPlugin {
       }
 
       const appliances = await this.getAllAppliances();
+
       const applianceData = await Promise.all(
         appliances.map((appliance) => this.fetchApplianceData(appliance.pncId)),
       );
 
       this.log.debug('Fetched: ', applianceData);
 
+
       appliances.map(({ applianceName, modelName, pncId }, i) => {
-        this.addAccessory({
-          pncId,
-          name: applianceName,
-          modelName,
-          firmwareVersion: applianceData[i]?.firmwareVersion,
-        });
+        this.log.debug('modelName: ', modelName);
+        if(modelName != "PUREi9")
+        {
+          this.addAccessory({
+            pncId,
+            name: applianceName,
+            modelName,
+            firmwareVersion: applianceData[i]?.firmwareVersion,
+          });
+       }
       });
 
       this.updateValues(applianceData);
