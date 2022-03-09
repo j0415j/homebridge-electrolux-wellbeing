@@ -149,10 +149,10 @@ class ElectroluxWellbeingPlatform implements DynamicPlatformPlugin {
         pm25: reported.PM2_5,
         pm10: reported.PM10,
         tvoc: reported.TVOC,
-        co2: reported.CO2,
+        //co2: reported.CO2,
         temp: reported.Temp,
         humidity: reported.Humidity,
-        envLightLevel: reported.EnvLightLvl,
+        //envLightLevel: reported.EnvLightLvl,
         rssi: reported.RSSI,
       };
     } catch (err) {
@@ -219,7 +219,7 @@ class ElectroluxWellbeingPlatform implements DynamicPlatformPlugin {
           state.humidity,
         );
 
-      accessory
+      /*accessory
         .getService(Service.CarbonDioxideSensor)!
         .updateCharacteristic(Characteristic.CarbonDioxideLevel, state.co2);
 
@@ -231,7 +231,7 @@ class ElectroluxWellbeingPlatform implements DynamicPlatformPlugin {
             Characteristic.CurrentAmbientLightLevel,
             state.envLightLevel,
           );
-      }
+      }*/
 
       accessory
         .getService(Service.AirQualitySensor)!
@@ -414,9 +414,9 @@ class ElectroluxWellbeingPlatform implements DynamicPlatformPlugin {
       accessory.addService(Service.AirPurifier);
       accessory.addService(Service.AirQualitySensor);
       accessory.addService(Service.TemperatureSensor);
-      accessory.addService(Service.CarbonDioxideSensor);
+      //accessory.addService(Service.CarbonDioxideSensor);
       accessory.addService(Service.HumiditySensor);
-      accessory.addService(Service.LightSensor);
+      //accessory.addService(Service.LightSensor);
 
       accessory
         .getService(Service.AccessoryInformation)!
